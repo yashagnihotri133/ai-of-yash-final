@@ -19,9 +19,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-app.post("/chat", async (req, res) => {
+async function handleChat(req, res) {
   try {
-    const userMessage = req.body.message;
+    const userMessage = req.body?.message;
 
     if (!userMessage) {
       return res.json({
@@ -85,7 +85,10 @@ Rules:
       reply: "⚠️ AI server error."
     });
   }
-});
+}
+
+app.post("/chat", handleChat);
+app.post("/api/chat", handleChat);
 
 const PORT = 3000;
 

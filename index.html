@@ -530,7 +530,7 @@ async function send(){
   // API request
 
   const res =
-  await fetch("/chat", {
+  await fetch("/api/chat", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message })
